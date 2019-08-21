@@ -1,0 +1,3 @@
+class WeatherStation < ApplicationRecord
+
+end
