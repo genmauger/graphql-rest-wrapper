@@ -2,12 +2,12 @@ require 'rest-client'
 
 module Resolvers
   class WeatherStationApi < Resolvers::Base
-    type [Types::WeatherStationType], null: true
-  
-    BASE_URL = "https://samples.openweathermap.org/data/3.0/stations?appid=21d7d516dddf5ff113e4b67fd0e93229"
+    type [Types::Weather::WeatherStationType], null: true
 
-    def resolve
-      response = RestClient.get BASE_URL
+    argument :id, String, required: false
+
+    def resolve(id: nil)
+      response = RestClient.get "https://samples.openweathermap.org/data/3.0/stations?appid=#{id}"
       JSON.parse(response)
     end
   end

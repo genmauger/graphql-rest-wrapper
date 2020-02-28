@@ -14,7 +14,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'graphql'
-gem 'rest-client', '~> 1.8'
+gem 'rest-client', '2.0.1'
 gem "graphiql-rails"
 gem 'pry'
 

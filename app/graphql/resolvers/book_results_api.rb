@@ -2,14 +2,13 @@ require 'rest-client'
 
 module Resolvers
   class BookResultsApi < Resolvers::Base
+    type [Types::Book::BookResultsType], null: true
 
-    type [Types::BookResultsType], null: true
+    argument :list_name_encoded, String, required: false
 
-    BASE_URL = "https://api.nytimes.com/svc/books/v3/lists/2018-01-05/hardcover-fiction.json?api-key=dEct4Q7v4wLSOX4Q5uKYq2s0aYM2BPz9"
-
-    def resolve
-      response = RestClient.get BASE_URL
-      JSON.parse(response)
+    def resolve(list_name_encoded: nil)
+      NewYorkTimesApi.new_york_times_api_return_results(list_name_encoded)
     end
+
   end
 end
